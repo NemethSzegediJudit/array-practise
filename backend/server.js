@@ -569,7 +569,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/students', (req, res) => {
-	res.send(JSON.stringify(students))
+	let studentlistItems = students
+		.filter(student => student.name.startsWith("P"))
+		.map(student => ({
+			name: student.name,
+			status: student.status,
+		})
+		)
+	res.send(JSON.stringify(studentlistItems))
 })
 
 app.listen(port, () => {

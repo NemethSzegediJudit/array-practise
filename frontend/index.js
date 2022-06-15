@@ -12,6 +12,7 @@ function getStudentlistHTML(students) {
     console.log(students);
     const studentlistHTMLs = students.map(studentComponent)
     console.log(studentlistHTMLs);
+    return studentlistHTMLs.join("");
 }
 
 function studentComponent(student) {
