@@ -3,4 +3,24 @@ async function getStudents() {
     return await response.json()
 }
 
-console.log(await getStudents());
+async function init() {
+    const students = await getStudents();
+    document.body.innerHTML = getStudentlistHTML(students);
+}
+
+function getStudentlistHTML(students) {
+    console.log(students);
+    const studentlistHTMLs = students.map(studentComponent)
+    console.log(studentlistHTMLs);
+}
+
+function studentComponent(student) {
+    return `
+    <div class="student">
+        <p>${student.name}</p>
+        <p>${student.status}</p>
+    </div>
+    `
+}
+
+init();
